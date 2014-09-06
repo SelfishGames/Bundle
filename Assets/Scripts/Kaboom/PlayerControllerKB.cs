@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerKB : MonoBehaviour
 {
     private Transform selected;
     private Vector3 offset;
