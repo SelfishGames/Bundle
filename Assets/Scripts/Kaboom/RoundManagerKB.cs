@@ -1,16 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class RoundManagerKB : MonoBehaviour
 {
+    #region Fields
     public GameManagerKB gameManagerKB;
 
-    private int currentRound;
+    [HideInInspector]
+    public bool roundSuccess,
+        roundFail;
+
+    [HideInInspector]
+    public int totalBombsCaught,
+        totalBombsMissed,
+        currentRound;
 
     private List<int> bombsPerRound = new List<int>();
+    #endregion
 
-    // Use this for initialization
+    #region Start
     void Start()
     {
         bombsPerRound.Add(0); //This element wont be used, I just want the first set of bombs to be in element 1
@@ -25,13 +35,19 @@ public class RoundManagerKB : MonoBehaviour
 
         currentRound = 1;
     }
+    #endregion
 
-    // Update is called once per frame
+    #region Update
     void Update()
     {
-        
+        //If all the bombs in this round are accounted for
+        if (totalBombsCaught + totalBombsMissed == bombsPerRound[currentRound])
+            roundSuccess = true;
     }
+    #endregion
 
+    //Sets the number of bombs to be dropped and the point value of each bomb
+    #region SetupRound
     public void SetupRound()
     {
         //Sets the number of bombs to be dropped for this round
@@ -40,5 +56,27 @@ public class RoundManagerKB : MonoBehaviour
         //The value of each bomb is the same as the round number
         //E.g Round 1 bombs are worth 1 point, Round 2 bombs worth 2 points etc
         gameManagerKB.pointsManagerKB.bombValue = currentRound;
+
+        totalBombsCaught = 0;
+        totalBombsMissed = 0;
     }
+    #endregion
+
+    //Destroys all currently active bombs
+    #region DestroyActiveBombs
+    public void DestroyActiveBombs()
+    {
+        //Gets all the currently active bombs 
+        var activeBombs = from bomb
+                          in gameManagerKB.bombDropperKB.bombList
+                          where bomb.activeSelf
+                          select bomb;
+
+        //And destroys them
+        foreach (GameObject bomb in activeBombs)
+        {
+            bomb.SetActive(false);
+        }
+    }
+    #endregion
 }
