@@ -6,6 +6,7 @@ public class GameManagerKB : MonoBehaviour
     public PointsManagerKB pointsManagerKB;
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
+    public Transform tires;
 
     [HideInInspector]
     public bool freezeMovement;
@@ -35,7 +36,7 @@ public class GameManagerKB : MonoBehaviour
     {
         Debug.Log("currentState " + currentState);
 
-        switch(currentState)
+        switch (currentState)
         {
             case MENU_STATE:
                 {
@@ -75,7 +76,7 @@ public class GameManagerKB : MonoBehaviour
                         //of bombs for this round can be dropped
                         bombDropperKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
 
-                        if(Input.GetKey(KeyCode.Space))
+                        if (Input.GetKey(KeyCode.Space))
                         {
                             roundManagerKB.roundFail = false;
                             freezeMovement = false;
@@ -86,7 +87,7 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_END_STATE:
                 {
-                    if(Input.GetKey(KeyCode.Space))
+                    if (Input.GetKey(KeyCode.Space))
                     {
                         //Increase round number
                         roundManagerKB.currentRound++;
@@ -113,10 +114,25 @@ public class GameManagerKB : MonoBehaviour
     #region LoseALife
     public void LoseALife()
     {
+        tires.GetChild(playerLives - 1).gameObject.SetActive(false);
+
         playerLives--;
+        Debug.Log("Lives left: " + playerLives);
 
         if (playerLives == 0)
             gameOver = true;
+    }
+    #endregion
+
+    #region GainALife
+    public void GainALife()
+    {
+        //If the player doesnt have maximum lives already
+        if (playerLives < 3)
+        {
+            tires.GetChild(playerLives).gameObject.SetActive(true);
+            playerLives++;
+        }
     }
     #endregion
 }

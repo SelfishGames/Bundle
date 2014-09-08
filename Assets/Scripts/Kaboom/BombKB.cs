@@ -36,6 +36,7 @@ public class BombKB : MonoBehaviour
 
         if (col.gameObject.name == "Floor")
         {
+            gameManagerKB.LoseALife();
             gameManagerKB.roundManagerKB.totalBombsMissed++;
             gameManagerKB.roundManagerKB.roundFail = true;
             this.gameObject.SetActive(false);

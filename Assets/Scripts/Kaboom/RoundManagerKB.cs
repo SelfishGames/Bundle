@@ -42,7 +42,9 @@ public class RoundManagerKB : MonoBehaviour
     {
         //If all the bombs in this round are accounted for
         if (totalBombsCaught + totalBombsMissed == bombsPerRound[currentRound])
+        {
             roundSuccess = true;
+        }
     }
     #endregion
 
