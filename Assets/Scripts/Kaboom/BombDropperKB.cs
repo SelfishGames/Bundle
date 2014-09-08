@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class BombDropperKB : MonoBehaviour
 {
+    public GameManagerKB gameManagerKB;
+
     public List<GameObject> bombList;
     public float speed;
     public float bombDropDelay;
 
     [HideInInspector]
     public int bombsThisRound,
-        totalBombsDropped,
-        totalBombsCaught;
+        totalBombsDropped;
 
     private float timer = 0;
 
@@ -24,8 +25,6 @@ public class BombDropperKB : MonoBehaviour
     void Start()
     {
         targetPos = this.transform.position;
-
-        totalBombsDropped = 0;
     }
 
     #region Update
@@ -57,6 +56,7 @@ public class BombDropperKB : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        //If there are still more bombs to be dropped
         if (totalBombsDropped < bombsThisRound)
         {
             //If the dropper is not moving, select a targetPosition and begin moving it
@@ -86,7 +86,9 @@ public class BombDropperKB : MonoBehaviour
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
 
+                //Increases the number of bombs dropped
                 totalBombsDropped++;
+                Debug.Log("Bombs dropped: " + totalBombsDropped);
 
                 //Resets the timer
                 timer = 0;

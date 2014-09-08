@@ -7,6 +7,9 @@ public class GameManagerKB : MonoBehaviour
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
 
+    [HideInInspector]
+    public bool freezeMovement;
+
     private int playerLives;
 
     private bool gameOver;
@@ -15,17 +18,19 @@ public class GameManagerKB : MonoBehaviour
     private const int MENU_STATE = 0,
         ROUND_START_STATE = 1,
         PLAYING_STATE = 2,
-        ROUND_END_STATE = 3;
+        ROUND_END_STATE = 3,
+        GAMEOVER_STATE = 4;
 
-    // Use this for initialization
+    #region Start
     void Start()
     {
         playerLives = 3;
         gameOver = false;
         currentState = MENU_STATE;
     }
+    #endregion
 
-    // Update is called once per frame
+    #region Update
     void Update()
     {
         Debug.Log("currentState " + currentState);
@@ -41,6 +46,7 @@ public class GameManagerKB : MonoBehaviour
             case ROUND_START_STATE:
                 {
                     roundManagerKB.SetupRound();
+                    Debug.Log("Round number: " + roundManagerKB.currentRound);
 
                     currentState = PLAYING_STATE;
 
@@ -48,20 +54,60 @@ public class GameManagerKB : MonoBehaviour
                 }
             case PLAYING_STATE:
                 {
-                    bombDropperKB.DropBombs();
+                    //If a bomb has not been missed
+                    if (!roundManagerKB.roundFail)
+                    {
+                        //Continue to drop bombs and check for success
+                        bombDropperKB.DropBombs();
 
+                        if (roundManagerKB.roundSuccess)
+                        {
+                            currentState = ROUND_END_STATE;
+                        }
+                    }
+                    else
+                    {
+                        //Freeze the game and destroy all other active bombs
+                        freezeMovement = true;
+                        roundManagerKB.DestroyActiveBombs();
 
+                        //Reset the number of bombsDropped so that the remaining number
+                        //of bombs for this round can be dropped
+                        bombDropperKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
+
+                        if(Input.GetKey(KeyCode.Space))
+                        {
+                            roundManagerKB.roundFail = false;
+                            freezeMovement = false;
+                        }
+                    }
 
                     break;
                 }
             case ROUND_END_STATE:
                 {
-                    bombDropperKB.totalBombsDropped = 0;
+                    if(Input.GetKey(KeyCode.Space))
+                    {
+                        //Increase round number
+                        roundManagerKB.currentRound++;
 
+                        //Reset comparison variables
+                        bombDropperKB.totalBombsDropped = 0;
+                        roundManagerKB.roundSuccess = false;
+
+                        //Move to the next round
+                        currentState = ROUND_START_STATE;
+                    }
+
+                    break;
+                }
+            case GAMEOVER_STATE:
+                {
                     break;
                 }
         }
     }
+    #endregion
 
     //Minus a life from the player
     #region LoseALife
