@@ -6,6 +6,7 @@ public class GameManagerKB : MonoBehaviour
     public PointsManagerKB pointsManagerKB;
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
+    public GUIManagerKB guiManagerKB;
     public Transform tires;
 
     [HideInInspector]
@@ -55,6 +56,10 @@ public class GameManagerKB : MonoBehaviour
                 }
             case PLAYING_STATE:
                 {
+                    //If the player loses all 3 lives during play
+                    if (gameOver)
+                        currentState = GAMEOVER_STATE;
+
                     //If a bomb has not been missed
                     if (!roundManagerKB.roundFail)
                     {
@@ -104,6 +109,11 @@ public class GameManagerKB : MonoBehaviour
                 }
             case GAMEOVER_STATE:
                 {
+                    guiManagerKB.gameOverText.gameObject.SetActive(true);
+
+                    if (Input.GetKey(KeyCode.Space))
+                        Application.LoadLevel("Kaboom");
+
                     break;
                 }
         }
@@ -124,6 +134,7 @@ public class GameManagerKB : MonoBehaviour
     }
     #endregion
 
+    //Plus a life to the player
     #region GainALife
     public void GainALife()
     {

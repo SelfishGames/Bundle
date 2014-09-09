@@ -7,8 +7,8 @@ public class PointsManagerKB : MonoBehaviour
     public GameManagerKB gameManagerKB;
 
     public int bombValue;
+    public  int currentScore;
 
-    private int currentScore;
     private int bonusLifeMark,
         nextBonusLife;
     #endregion
