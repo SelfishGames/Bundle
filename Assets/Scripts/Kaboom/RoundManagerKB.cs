@@ -17,6 +17,9 @@ public class RoundManagerKB : MonoBehaviour
         totalBombsMissed,
         currentRound;
 
+    [HideInInspector]
+    public float bonusDropSpeed;
+
     private List<int> bombsPerRound = new List<int>();
     #endregion
 

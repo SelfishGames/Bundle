@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameManagerKB : MonoBehaviour
 {
+    #region Fields
     public PointsManagerKB pointsManagerKB;
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
@@ -22,6 +23,7 @@ public class GameManagerKB : MonoBehaviour
         PLAYING_STATE = 2,
         ROUND_END_STATE = 3,
         GAMEOVER_STATE = 4;
+    #endregion
 
     #region Start
     void Start()
@@ -35,8 +37,6 @@ public class GameManagerKB : MonoBehaviour
     #region Update
     void Update()
     {
-        Debug.Log("currentState " + currentState);
-
         switch (currentState)
         {
             case MENU_STATE:
@@ -47,8 +47,8 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_START_STATE:
                 {
+                    //Setup the number of bombs to be dropped and the point value of each bomb
                     roundManagerKB.SetupRound();
-                    Debug.Log("Round number: " + roundManagerKB.currentRound);
 
                     currentState = PLAYING_STATE;
 
@@ -83,6 +83,9 @@ public class GameManagerKB : MonoBehaviour
 
                         if (Input.GetKey(KeyCode.Space))
                         {
+                            //Make the bombs drop slower
+                            roundManagerKB.bonusDropSpeed--;
+
                             roundManagerKB.roundFail = false;
                             freezeMovement = false;
                         }
@@ -96,6 +99,8 @@ public class GameManagerKB : MonoBehaviour
                     {
                         //Increase round number
                         roundManagerKB.currentRound++;
+
+                        roundManagerKB.bonusDropSpeed++;
 
                         //Reset comparison variables
                         bombDropperKB.totalBombsDropped = 0;
