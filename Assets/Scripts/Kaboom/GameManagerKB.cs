@@ -3,9 +3,12 @@ using System.Collections;
 
 public class GameManagerKB : MonoBehaviour
 {
+    #region Fields
     public PointsManagerKB pointsManagerKB;
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
+    public GUIManagerKB guiManagerKB;
+    public Transform tires;
 
     [HideInInspector]
     public bool freezeMovement;
@@ -20,6 +23,7 @@ public class GameManagerKB : MonoBehaviour
         PLAYING_STATE = 2,
         ROUND_END_STATE = 3,
         GAMEOVER_STATE = 4;
+    #endregion
 
     #region Start
     void Start()
@@ -33,9 +37,7 @@ public class GameManagerKB : MonoBehaviour
     #region Update
     void Update()
     {
-        Debug.Log("currentState " + currentState);
-
-        switch(currentState)
+        switch (currentState)
         {
             case MENU_STATE:
                 {
@@ -45,8 +47,8 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_START_STATE:
                 {
+                    //Setup the number of bombs to be dropped and the point value of each bomb
                     roundManagerKB.SetupRound();
-                    Debug.Log("Round number: " + roundManagerKB.currentRound);
 
                     currentState = PLAYING_STATE;
 
@@ -54,6 +56,10 @@ public class GameManagerKB : MonoBehaviour
                 }
             case PLAYING_STATE:
                 {
+                    //If the player loses all 3 lives during play
+                    if (gameOver)
+                        currentState = GAMEOVER_STATE;
+
                     //If a bomb has not been missed
                     if (!roundManagerKB.roundFail)
                     {
@@ -75,8 +81,11 @@ public class GameManagerKB : MonoBehaviour
                         //of bombs for this round can be dropped
                         bombDropperKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
 
-                        if(Input.GetKey(KeyCode.Space))
+                        if (Input.GetKey(KeyCode.Space))
                         {
+                            //Make the bombs drop slower
+                            roundManagerKB.bonusDropSpeed--;
+
                             roundManagerKB.roundFail = false;
                             freezeMovement = false;
                         }
@@ -86,10 +95,12 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_END_STATE:
                 {
-                    if(Input.GetKey(KeyCode.Space))
+                    if (Input.GetKey(KeyCode.Space))
                     {
                         //Increase round number
                         roundManagerKB.currentRound++;
+
+                        roundManagerKB.bonusDropSpeed++;
 
                         //Reset comparison variables
                         bombDropperKB.totalBombsDropped = 0;
@@ -103,6 +114,11 @@ public class GameManagerKB : MonoBehaviour
                 }
             case GAMEOVER_STATE:
                 {
+                    guiManagerKB.gameOverText.gameObject.SetActive(true);
+
+                    if (Input.GetKey(KeyCode.Space))
+                        Application.LoadLevel("Kaboom");
+
                     break;
                 }
         }
@@ -113,10 +129,26 @@ public class GameManagerKB : MonoBehaviour
     #region LoseALife
     public void LoseALife()
     {
+        tires.GetChild(playerLives - 1).gameObject.SetActive(false);
+
         playerLives--;
+        Debug.Log("Lives left: " + playerLives);
 
         if (playerLives == 0)
             gameOver = true;
+    }
+    #endregion
+
+    //Plus a life to the player
+    #region GainALife
+    public void GainALife()
+    {
+        //If the player doesnt have maximum lives already
+        if (playerLives < 3)
+        {
+            tires.GetChild(playerLives).gameObject.SetActive(true);
+            playerLives++;
+        }
     }
     #endregion
 }

@@ -5,7 +5,10 @@ public class BombKB : MonoBehaviour
 {
     public GameManagerKB gameManagerKB;
 
-    public float speed;
+    [HideInInspector]
+    public float totalDropSpeed;
+
+    private float baseDropSpeed = 3;
 
     // Use this for initialization
     void Start()
@@ -16,9 +19,13 @@ public class BombKB : MonoBehaviour
     #region Update
     void Update()
     {
+        //Sets speed to be base value + the bonus that changes depending on the round
+        //Clamps it between the base value and 8
+        totalDropSpeed = Mathf.Clamp(baseDropSpeed + gameManagerKB.roundManagerKB.bonusDropSpeed, 3, 8);
+
         //Fall if the game isnt frozen
         if(!gameManagerKB.freezeMovement)
-            this.transform.position += Vector3.down * speed * Time.deltaTime;
+            this.transform.position += Vector3.down * totalDropSpeed * Time.deltaTime;
     }
     #endregion
 
@@ -36,6 +43,7 @@ public class BombKB : MonoBehaviour
 
         if (col.gameObject.name == "Floor")
         {
+            gameManagerKB.LoseALife();
             gameManagerKB.roundManagerKB.totalBombsMissed++;
             gameManagerKB.roundManagerKB.roundFail = true;
             this.gameObject.SetActive(false);

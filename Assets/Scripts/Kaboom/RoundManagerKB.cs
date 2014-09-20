@@ -17,6 +17,9 @@ public class RoundManagerKB : MonoBehaviour
         totalBombsMissed,
         currentRound;
 
+    [HideInInspector]
+    public float bonusDropSpeed;
+
     private List<int> bombsPerRound = new List<int>();
     #endregion
 
@@ -42,7 +45,9 @@ public class RoundManagerKB : MonoBehaviour
     {
         //If all the bombs in this round are accounted for
         if (totalBombsCaught + totalBombsMissed == bombsPerRound[currentRound])
+        {
             roundSuccess = true;
+        }
     }
     #endregion
 
