@@ -3,29 +3,24 @@ using System.Collections;
 
 public class BombKB : MonoBehaviour
 {
+    #region Fields
     public GameManagerKB gameManagerKB;
 
     [HideInInspector]
     public float totalDropSpeed;
+    public float moveSpeed;
 
     private float baseDropSpeed = 3;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    #endregion
 
     #region Update
     void Update()
     {
-        //Sets speed to be base value + the bonus that changes depending on the round
-        //Clamps it between the base value and 8
-        totalDropSpeed = Mathf.Clamp(baseDropSpeed + gameManagerKB.roundManagerKB.bonusDropSpeed, 3, 8);
+        moveSpeed = gameManagerKB.roundManagerKB.currentBombSpeed;
 
         //Fall if the game isnt frozen
         if(!gameManagerKB.freezeMovement)
-            this.transform.position += Vector3.down * totalDropSpeed * Time.deltaTime;
+            this.transform.position += Vector3.down * moveSpeed * Time.deltaTime;
     }
     #endregion
 
@@ -37,7 +32,6 @@ public class BombKB : MonoBehaviour
         {
             gameManagerKB.pointsManagerKB.AddPoints();
             gameManagerKB.roundManagerKB.totalBombsCaught++;
-            Debug.Log("Bombs caught: " + gameManagerKB.roundManagerKB.totalBombsCaught);
             this.gameObject.SetActive(false);
         }
 

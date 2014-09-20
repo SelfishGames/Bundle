@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 public class BombDropperKB : MonoBehaviour
 {
+    #region Fields
     public GameManagerKB gameManagerKB;
 
     public List<GameObject> bombList;
-    public float speed;
+    public float moveSpeed;
     public float bombDropDelay;
 
     [HideInInspector]
-    public int bombsThisRound,
-        totalBombsDropped;
+    public int bombsThisRound;
 
     private float timer = 0;
 
@@ -21,16 +21,12 @@ public class BombDropperKB : MonoBehaviour
         rightWall = 4.5f;
 
     private bool isMoving = false;
+    #endregion
 
+    #region Start
     void Start()
     {
         targetPos = this.transform.position;
-    }
-
-    #region Update
-    void Update()
-    {
-
     }
     #endregion
 
@@ -57,7 +53,7 @@ public class BombDropperKB : MonoBehaviour
         timer += Time.deltaTime;
 
         //If there are still more bombs to be dropped
-        if (totalBombsDropped < bombsThisRound)
+        if (gameManagerKB.roundManagerKB.totalBombsDropped < bombsThisRound)
         {
             //If the dropper is not moving, select a targetPosition and begin moving it
             if (!isMoving)
@@ -69,7 +65,7 @@ public class BombDropperKB : MonoBehaviour
             {
                 //If the dropper is not close to its targetPosition, then keep moving it closer
                 if (Vector3.Distance(transform.position, targetPos) >= 0.5f)
-                    transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
                 else
                     isMoving = false;
             }
@@ -87,8 +83,7 @@ public class BombDropperKB : MonoBehaviour
                 nextBomb.gameObject.SetActive(true);
 
                 //Increases the number of bombs dropped
-                totalBombsDropped++;
-                Debug.Log("Bombs dropped: " + totalBombsDropped);
+                gameManagerKB.roundManagerKB.totalBombsDropped++;
 
                 //Resets the timer
                 timer = 0;

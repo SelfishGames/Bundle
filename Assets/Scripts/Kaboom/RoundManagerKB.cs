@@ -14,29 +14,22 @@ public class RoundManagerKB : MonoBehaviour
 
     [HideInInspector]
     public int totalBombsCaught,
+        totalBombsDropped,
         totalBombsMissed,
         currentRound;
 
-    [HideInInspector]
-    public float bonusDropSpeed;
+        public List<RoundInformationKB> rounds;
 
-    private List<int> bombsPerRound = new List<int>();
+    [HideInInspector]
+    public float currentBombSpeed;
     #endregion
 
     #region Start
     void Start()
     {
-        bombsPerRound.Add(0); //This element wont be used, I just want the first set of bombs to be in element 1
-        bombsPerRound.Add(10);
-        bombsPerRound.Add(20);
-        bombsPerRound.Add(30);
-        bombsPerRound.Add(40);
-        bombsPerRound.Add(50);
-        bombsPerRound.Add(75);
-        bombsPerRound.Add(100);
-        bombsPerRound.Add(150);
-
         currentRound = 1;
+
+        currentBombSpeed = rounds[currentRound].bombMoveSpeed;
     }
     #endregion
 
@@ -44,7 +37,7 @@ public class RoundManagerKB : MonoBehaviour
     void Update()
     {
         //If all the bombs in this round are accounted for
-        if (totalBombsCaught + totalBombsMissed == bombsPerRound[currentRound])
+        if (totalBombsCaught + totalBombsMissed == rounds[currentRound].roundBombCount)
         {
             roundSuccess = true;
         }
@@ -55,15 +48,19 @@ public class RoundManagerKB : MonoBehaviour
     #region SetupRound
     public void SetupRound()
     {
-        //Sets the number of bombs to be dropped for this round
-        gameManagerKB.bombDropperKB.bombsThisRound = bombsPerRound[currentRound];
-        
+        //Sets the number of bombs to be dropped and the rate they get dropped at
+        gameManagerKB.bombDropperKB.bombsThisRound = rounds[currentRound].roundBombCount;
+        gameManagerKB.bombDropperKB.bombDropDelay = rounds[currentRound].bombDropDelay;
+        gameManagerKB.bombDropperKB.moveSpeed = rounds[currentRound].dropperMoveSpeed;
+
         //The value of each bomb is the same as the round number
         //E.g Round 1 bombs are worth 1 point, Round 2 bombs worth 2 points etc
-        gameManagerKB.pointsManagerKB.bombValue = currentRound;
+        gameManagerKB.pointsManagerKB.bombValue = rounds[currentRound].roundBombValue;
+        currentBombSpeed = rounds[currentRound].bombMoveSpeed;
 
         totalBombsCaught = 0;
         totalBombsMissed = 0;
+        totalBombsDropped = 0;
     }
     #endregion
 

@@ -17,12 +17,14 @@ public class GameManagerKB : MonoBehaviour
 
     private bool gameOver;
 
-    private int currentState;
+    private int currentState,
+        roundIndex;
     private const int MENU_STATE = 0,
         ROUND_START_STATE = 1,
         PLAYING_STATE = 2,
-        ROUND_END_STATE = 3,
-        GAMEOVER_STATE = 4;
+        BOMB_MISSED_STATE = 3,
+        ROUND_END_STATE = 4,
+        GAMEOVER_STATE = 5;
     #endregion
 
     #region Start
@@ -50,45 +52,57 @@ public class GameManagerKB : MonoBehaviour
                     //Setup the number of bombs to be dropped and the point value of each bomb
                     roundManagerKB.SetupRound();
 
+                    roundIndex = roundManagerKB.currentRound;
+
                     currentState = PLAYING_STATE;
 
                     break;
                 }
             case PLAYING_STATE:
                 {
+                    Debug.Log("Drop delay: " + bombDropperKB.bombDropDelay);
+
                     //If the player loses all 3 lives during play
                     if (gameOver)
                         currentState = GAMEOVER_STATE;
 
-                    //If a bomb has not been missed
-                    if (!roundManagerKB.roundFail)
-                    {
-                        //Continue to drop bombs and check for success
-                        bombDropperKB.DropBombs();
+                    //Continue to drop bombs
+                    bombDropperKB.DropBombs();
 
-                        if (roundManagerKB.roundSuccess)
-                        {
-                            currentState = ROUND_END_STATE;
-                        }
+                    //Check if the round has succeeded by catching all the bombs
+                    //or failed by missing a bomb
+                    if (roundManagerKB.roundSuccess)
+                    {
+                        currentState = ROUND_END_STATE;
                     }
-                    else
+                    else if(roundManagerKB.roundFail)
                     {
-                        //Freeze the game and destroy all other active bombs
-                        freezeMovement = true;
-                        roundManagerKB.DestroyActiveBombs();
+                        currentState = BOMB_MISSED_STATE;
+                    }
+                    
+                    break;
+                }
+            case BOMB_MISSED_STATE:
+                {
+                    //Freeze the game and destroy all other active bombs
+                    freezeMovement = true;
+                    roundManagerKB.DestroyActiveBombs();
+                    
+                    //Reset the number of bombsDropped so that the remaining number
+                    //of bombs for this round can be dropped
+                    roundManagerKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
 
-                        //Reset the number of bombsDropped so that the remaining number
-                        //of bombs for this round can be dropped
-                        bombDropperKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        roundIndex--;
 
-                        if (Input.GetKey(KeyCode.Space))
-                        {
-                            //Make the bombs drop slower
-                            roundManagerKB.bonusDropSpeed--;
+                        roundManagerKB.currentBombSpeed = roundManagerKB.rounds[roundIndex].bombMoveSpeed;
+                        bombDropperKB.moveSpeed = roundManagerKB.rounds[roundIndex].dropperMoveSpeed;
+                        bombDropperKB.bombDropDelay = roundManagerKB.rounds[roundIndex].bombDropDelay;
 
-                            roundManagerKB.roundFail = false;
-                            freezeMovement = false;
-                        }
+                        roundManagerKB.roundFail = false;
+                        freezeMovement = false;
+                        currentState = PLAYING_STATE;
                     }
 
                     break;
@@ -100,10 +114,6 @@ public class GameManagerKB : MonoBehaviour
                         //Increase round number
                         roundManagerKB.currentRound++;
 
-                        roundManagerKB.bonusDropSpeed++;
-
-                        //Reset comparison variables
-                        bombDropperKB.totalBombsDropped = 0;
                         roundManagerKB.roundSuccess = false;
 
                         //Move to the next round
