@@ -79,6 +79,8 @@ public class BombDropperKB : MonoBehaviour
                 Vector3 dropPos = this.transform.position;
                 nextBomb.position = dropPos;
 
+                nextBomb.renderer.material.color = gameManagerKB.roundManagerKB.targetBombColour;
+
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
 
