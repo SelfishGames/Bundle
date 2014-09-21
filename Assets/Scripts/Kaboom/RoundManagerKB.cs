@@ -47,21 +47,22 @@ public class RoundManagerKB : MonoBehaviour
     }
     #endregion
 
-    //Sets the number of bombs to be dropped and the point value of each bomb
+    //Called at the start of each new round
     #region SetupRound
     public void SetupRound()
     {
-        //Sets the number of bombs to be dropped and the rate they get dropped at
+        //The number of bombs to be dropped, the delay between dropping bombs and the 
+        //speed that the dropper moves at
         gameManagerKB.bombDropperKB.bombsThisRound = rounds[currentRound].bombCount;
         gameManagerKB.bombDropperKB.bombDropDelay = rounds[currentRound].bombDropDelay;
         gameManagerKB.bombDropperKB.moveSpeed = rounds[currentRound].dropperMoveSpeed;
 
-        //The value of each bomb is the same as the round number
-        //E.g Round 1 bombs are worth 1 point, Round 2 bombs worth 2 points etc
+        //The value of catching a bomb, the speed that the bombs drop at and the target colour for this round
         gameManagerKB.pointsManagerKB.bombValue = rounds[currentRound].bombValue;
         currentBombSpeed = rounds[currentRound].bombMoveSpeed;
         targetBombColour = rounds[currentRound].bombColour;
 
+        //Resets the variables
         totalBombsCaught = 0;
         totalBombsMissed = 0;
         totalBombsDropped = 0;

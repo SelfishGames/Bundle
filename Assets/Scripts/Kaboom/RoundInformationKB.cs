@@ -11,6 +11,7 @@ public class RoundInformationKB : MonoBehaviour
 		bombMoveSpeed;
 
 	public int bombCount,
+		falseBombCount,
 		bombValue; 
 
 	public Color bombColour;
