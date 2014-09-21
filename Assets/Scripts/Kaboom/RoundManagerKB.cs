@@ -18,10 +18,13 @@ public class RoundManagerKB : MonoBehaviour
         totalBombsMissed,
         currentRound;
 
-        public List<RoundInformationKB> rounds;
+    public List<RoundInformationKB> rounds;
 
     [HideInInspector]
     public float currentBombSpeed;
+
+    [HideInInspector]
+    public Color targetBombColour;
     #endregion
 
     #region Start
@@ -37,7 +40,7 @@ public class RoundManagerKB : MonoBehaviour
     void Update()
     {
         //If all the bombs in this round are accounted for
-        if (totalBombsCaught + totalBombsMissed == rounds[currentRound].roundBombCount)
+        if (totalBombsCaught + totalBombsMissed == rounds[currentRound].bombCount)
         {
             roundSuccess = true;
         }
@@ -49,14 +52,15 @@ public class RoundManagerKB : MonoBehaviour
     public void SetupRound()
     {
         //Sets the number of bombs to be dropped and the rate they get dropped at
-        gameManagerKB.bombDropperKB.bombsThisRound = rounds[currentRound].roundBombCount;
+        gameManagerKB.bombDropperKB.bombsThisRound = rounds[currentRound].bombCount;
         gameManagerKB.bombDropperKB.bombDropDelay = rounds[currentRound].bombDropDelay;
         gameManagerKB.bombDropperKB.moveSpeed = rounds[currentRound].dropperMoveSpeed;
 
         //The value of each bomb is the same as the round number
         //E.g Round 1 bombs are worth 1 point, Round 2 bombs worth 2 points etc
-        gameManagerKB.pointsManagerKB.bombValue = rounds[currentRound].roundBombValue;
+        gameManagerKB.pointsManagerKB.bombValue = rounds[currentRound].bombValue;
         currentBombSpeed = rounds[currentRound].bombMoveSpeed;
+        targetBombColour = rounds[currentRound].bombColour;
 
         totalBombsCaught = 0;
         totalBombsMissed = 0;
