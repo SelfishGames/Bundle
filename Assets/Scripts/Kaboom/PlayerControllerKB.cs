@@ -9,6 +9,9 @@ public class PlayerControllerKB : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 screenPoint;
+
+    private float leftWall = -6.5f,
+        rightWall = 6.5f;
     #endregion
 
     #region Update
@@ -39,7 +42,7 @@ public class PlayerControllerKB : MonoBehaviour
 
             Vector3 dragPos = transform.position;
             dragPos.x = x;
-            dragPos.x = Mathf.Clamp(dragPos.x, -5f, 5f);
+            dragPos.x = Mathf.Clamp(dragPos.x, leftWall, rightWall);
 
             transform.position = dragPos;
         }

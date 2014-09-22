@@ -24,7 +24,7 @@ public class RoundManagerKB : MonoBehaviour
     public float currentBombSpeed;
 
     [HideInInspector]
-    public Color targetBombColour;
+    public Color currentTargetColour;
     #endregion
 
     #region Start
@@ -60,7 +60,7 @@ public class RoundManagerKB : MonoBehaviour
         //The value of catching a bomb, the speed that the bombs drop at and the target colour for this round
         gameManagerKB.pointsManagerKB.bombValue = rounds[currentRound].bombValue;
         currentBombSpeed = rounds[currentRound].bombMoveSpeed;
-        targetBombColour = rounds[currentRound].bombColour;
+        currentTargetColour = rounds[currentRound].targetColour;
 
         //Resets the variables
         totalBombsCaught = 0;

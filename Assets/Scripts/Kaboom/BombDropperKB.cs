@@ -17,8 +17,8 @@ public class BombDropperKB : MonoBehaviour
     private float timer = 0;
 
     private Vector3 targetPos;
-    private float leftWall = -4.5f,
-        rightWall = 4.5f;
+    private float leftWall = -6.5f,
+        rightWall = 6.5f;
 
     private bool isMoving = false;
     #endregion
@@ -73,19 +73,30 @@ public class BombDropperKB : MonoBehaviour
             //Every time the timer passes the drop delay
             if (timer > bombDropDelay)
             {
+                //Gets an inactive bomb
                 Transform nextBomb = GetBomb();
 
                 //Drop the bomb from the bombDroppers position
                 Vector3 dropPos = this.transform.position;
                 nextBomb.position = dropPos;
 
-                nextBomb.renderer.material.color = gameManagerKB.roundManagerKB.targetBombColour;
+                //A random chance to drop a wrong coloured bomb 30% of the time
+                if(Random.Range(0, 10) < 3)
+                {
+                    while(nextBomb.renderer.material.color == gameManagerKB.roundManagerKB.currentTargetColour)
+                        nextBomb.renderer.material.color = gameManagerKB.randomColours[Random.Range(0, 3)];
+                }
+                else
+                {
+                    nextBomb.renderer.material.color = gameManagerKB.roundManagerKB.currentTargetColour;
+
+                    //Only increment when a correct bomb is dropped, to ensure the correct
+                    //number of valid bombs is always dropped
+                    gameManagerKB.roundManagerKB.totalBombsDropped++;
+                }
 
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
-
-                //Increases the number of bombs dropped
-                gameManagerKB.roundManagerKB.totalBombsDropped++;
 
                 //Resets the timer
                 timer = 0;

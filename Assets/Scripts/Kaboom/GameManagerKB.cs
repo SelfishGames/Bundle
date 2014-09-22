@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManagerKB : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManagerKB : MonoBehaviour
 
     [HideInInspector]
     public bool freezeMovement;
+
+    [HideInInspector]
+    //For the bomb and player things colours
+    public List<Color> randomColours = new List<Color>();
 
     private int playerLives;
 
@@ -30,6 +35,11 @@ public class GameManagerKB : MonoBehaviour
     #region Start
     void Start()
     {
+        randomColours.Add(Color.red);
+        randomColours.Add(Color.blue);
+        randomColours.Add(Color.green);
+        randomColours.Add(Color.yellow);
+
         playerLives = 3;
         gameOver = false;
         currentState = MENU_STATE;
@@ -60,8 +70,6 @@ public class GameManagerKB : MonoBehaviour
                 }
             case PLAYING_STATE:
                 {
-                    Debug.Log("Drop delay: " + bombDropperKB.bombDropDelay);
-
                     //If the player loses all 3 lives during play
                     if (gameOver)
                         currentState = GAMEOVER_STATE;
@@ -94,7 +102,10 @@ public class GameManagerKB : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.Space))
                     {
+                        //Reduces the speed difficulty to match that of the previous round,
+                        //within the range of the specified rounds
                         roundIndex--;
+                        roundIndex = Mathf.Clamp(roundIndex, 1, 8);
 
                         roundManagerKB.currentBombSpeed = roundManagerKB.rounds[roundIndex].bombMoveSpeed;
                         bombDropperKB.moveSpeed = roundManagerKB.rounds[roundIndex].dropperMoveSpeed;

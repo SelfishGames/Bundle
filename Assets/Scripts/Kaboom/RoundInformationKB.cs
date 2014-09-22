@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class RoundInformationKB : MonoBehaviour 
 {
@@ -14,19 +13,13 @@ public class RoundInformationKB : MonoBehaviour
 		falseBombCount,
 		bombValue; 
 
-	public Color bombColour;
-
-	private List<Color> randomColours = new List<Color>();
+	public Color targetColour;
 
 	// Use this for initialization
 	void Start () 
 	{
-		randomColours.Add(Color.red);
-		randomColours.Add(Color.blue);
-		randomColours.Add(Color.green);
-		randomColours.Add(Color.yellow);
-
-		bombColour = randomColours[Random.Range(0, randomColours.Count)];
+		//Selects a random colour from the list
+		targetColour = gameManagerKB.randomColours[Random.Range(0, 3)];
 	}
 	
 	// Update is called once per frame
