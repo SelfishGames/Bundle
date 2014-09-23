@@ -97,7 +97,7 @@ public class BombDropperKB : MonoBehaviour
 
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
-
+                SetTargetPosition();
                 //Resets the timer
                 timer = 0;
             }
