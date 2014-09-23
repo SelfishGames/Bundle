@@ -19,7 +19,7 @@ public class RoundInformationKB : MonoBehaviour
 	void Start () 
 	{
 		//Selects a random colour from the list
-		targetColour = gameManagerKB.randomColours[Random.Range(0, 3)];
+		targetColour = gameManagerKB.randomColours[Random.Range(0, 4)];
 	}
 	
 	// Update is called once per frame

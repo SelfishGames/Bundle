@@ -14,7 +14,8 @@ public class BombDropperKB : MonoBehaviour
     [HideInInspector]
     public int bombsThisRound;
 
-    private float timer = 0;
+    private float timer = 0,
+        falseBombChance = 3;
 
     private Vector3 targetPos;
     private float leftWall = -6.5f,
@@ -77,14 +78,17 @@ public class BombDropperKB : MonoBehaviour
                 Transform nextBomb = GetBomb();
 
                 //Drop the bomb from the bombDroppers position
-                Vector3 dropPos = this.transform.position;
-                nextBomb.position = dropPos;
+                nextBomb.position = this.transform.position;
 
-                //A random chance to drop a wrong coloured bomb 30% of the time
-                if(Random.Range(0, 10) < 3)
+                //A random chance to drop a false bomb
+                if(Random.Range(0, 10) < falseBombChance)
                 {
+                    //Sets the bomb to be a random colour
+                    nextBomb.renderer.material.color = gameManagerKB.randomColours[Random.Range(0, 4)];
+
+                    //Ensures that the false bomb does not match the valid colour for this round
                     while(nextBomb.renderer.material.color == gameManagerKB.roundManagerKB.currentTargetColour)
-                        nextBomb.renderer.material.color = gameManagerKB.randomColours[Random.Range(0, 3)];
+                        nextBomb.renderer.material.color = gameManagerKB.randomColours[Random.Range(0, 4)];
                 }
                 else
                 {
@@ -97,6 +101,9 @@ public class BombDropperKB : MonoBehaviour
 
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
+
+                //Set a new target position
+                SetTargetPosition();
 
                 //Resets the timer
                 timer = 0;

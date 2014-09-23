@@ -62,6 +62,9 @@ public class RoundManagerKB : MonoBehaviour
         currentBombSpeed = rounds[currentRound].bombMoveSpeed;
         currentTargetColour = rounds[currentRound].targetColour;
 
+        foreach(Transform paddle in gameManagerKB.paddles)
+            paddle.renderer.material.color = rounds[currentRound].targetColour;
+
         //Resets the variables
         totalBombsCaught = 0;
         totalBombsMissed = 0;

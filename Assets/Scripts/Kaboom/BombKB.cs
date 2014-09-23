@@ -8,10 +8,6 @@ public class BombKB : MonoBehaviour
 
     [HideInInspector]
     public float moveSpeed;
-
-    public bool isDecoy;
-
-    private float baseDropSpeed = 3;
     #endregion
 
     #region Update
@@ -30,7 +26,7 @@ public class BombKB : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         //If the bomb hits the tires
-        if (col.gameObject.name == "Tires")
+        if (col.gameObject.name == "Paddles")
         {
             //If the player catches a valid bomb, then add points
             if(this.renderer.material.color == gameManagerKB.roundManagerKB.currentTargetColour)

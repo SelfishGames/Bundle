@@ -9,12 +9,12 @@ public class GameManagerKB : MonoBehaviour
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
     public GUIManagerKB guiManagerKB;
-    public Transform tires;
+    public Transform paddles;
 
     [HideInInspector]
     public bool freezeMovement;
 
-    [HideInInspector]
+    //[HideInInspector]
     //For the bomb and player things colours
     public List<Color> randomColours = new List<Color>();
 
@@ -150,7 +150,7 @@ public class GameManagerKB : MonoBehaviour
     #region LoseALife
     public void LoseALife()
     {
-        tires.GetChild(playerLives - 1).gameObject.SetActive(false);
+        paddles.GetChild(playerLives - 1).gameObject.SetActive(false);
 
         playerLives--;
         Debug.Log("Lives left: " + playerLives);
@@ -167,7 +167,7 @@ public class GameManagerKB : MonoBehaviour
         //If the player doesnt have maximum lives already
         if (playerLives < 3)
         {
-            tires.GetChild(playerLives).gameObject.SetActive(true);
+            paddles.GetChild(playerLives).gameObject.SetActive(true);
             playerLives++;
         }
     }
