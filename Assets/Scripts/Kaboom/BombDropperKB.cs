@@ -101,14 +101,10 @@ public class BombDropperKB : MonoBehaviour
 
                 //Activates the dropped bomb
                 nextBomb.gameObject.SetActive(true);
-<<<<<<< HEAD
-                SetTargetPosition();
-=======
 
                 //Set a new target position
                 SetTargetPosition();
 
->>>>>>> origin/master
                 //Resets the timer
                 timer = 0;
             }
