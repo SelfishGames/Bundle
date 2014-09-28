@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 5ee36872e25cef7459bde0542aa42707
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SpriteSheet2ndEffect
+    21300002: SpriteSheet2ndEffect_0
+    21300004: SpriteSheet2ndEffect_1
+    21300006: SpriteSheet2ndEffect_2
+    21300008: SpriteSheet2ndEffect_3
+    21300010: SpriteSheet2ndEffect_4
+    21300012: SpriteSheet2ndEffect_5
+    21300014: SpriteSheet2ndEffect_6
+    21300016: SpriteSheet2ndEffect_7
+    21300018: SpriteSheet2ndEffect_8
+    21300020: SpriteSheet2ndEffect_9
+    21300022: SpriteSheet2ndEffect_10
+    21300024: SpriteSheet2ndEffect_11
+    21300026: SpriteSheet2ndEffect_12
+    21300028: SpriteSheet2ndEffect_13
+    21300030: SpriteSheet2ndEffect_14
+    21300032: SpriteSheet2ndEffect_15
+    21300034: SpriteSheet2ndEffect_16
+    21300036: SpriteSheet2ndEffect_17
+    21300038: SpriteSheet2ndEffect_18
+    21300040: SpriteSheet2ndEffect_19
+    21300042: SpriteSheet2ndEffect_22
+    21300044: SpriteSheet2ndEffect_23
+    21300046: SpriteSheet2ndEffect_26
+    21300048: SpriteSheet2ndEffect_27
+    21300050: SpriteSheet2ndEffect_32
+    21300052: SpriteSheet2ndEffect_33
+    21300054: SpriteSheet2ndEffect_36
+    21300056: SpriteSheet2ndEffect_37
+    21300058: SpriteSheet2ndEffect_38
+    21300060: SpriteSheet2ndEffect_39
+    21300062: SpriteSheet2ndEffect_40
+    21300064: SpriteSheet2ndEffect_41
+    21300066: SpriteSheet2ndEffect_42
+    21300068: SpriteSheet2ndEffect_43
+    21300070: SpriteSheet2ndEffect_44
+    21300072: SpriteSheet2ndEffect_45
+    21300074: SpriteSheet2ndEffect_46
+    21300076: SpriteSheet2ndEffect_47
+    21300078: SpriteSheet2ndEffect_48
+    21300080: SpriteSheet2ndEffect_49
+    21300082: SpriteSheet2ndEffect_50
+    21300084: SpriteSheet2ndEffect_51
+    21300086: SpriteSheet2ndEffect_52
+    21300088: SpriteSheet2ndEffect_53
+    21300090: SpriteSheet2ndEffect_54
+    21300092: SpriteSheet2ndEffect_55
+    21300094: SpriteSheet2ndEffect_56
+    21300096: SpriteSheet2ndEffect_57
+    21300098: SpriteSheet2ndEffect_58
+    21300100: SpriteSheet2ndEffect_59
+    21300102: SpriteSheet2ndEffect_60
+    21300104: SpriteSheet2ndEffect_61
+    21300106: SpriteSheet2ndEffect_62
+    21300108: SpriteSheet2ndEffect_63
+    21300110: SpriteSheet2ndEffect_64
+    21300112: SpriteSheet2ndEffect_65
+    21300114: SpriteSheet2ndEffect_66
+    21300116: SpriteSheet2ndEffect_67
+    21300118: SpriteSheet2ndEffect_68
+    21300120: SpriteSheet2ndEffect_69
+    21300122: SpriteSheet2ndEffect_70
+    21300124: SpriteSheet2ndEffect_71
+    21300126: SpriteSheet2ndEffect_72
+    21300128: SpriteSheet2ndEffect_73
+    21300130: SpriteSheet2ndEffect_74
+    21300132: SpriteSheet2ndEffect_75
+    21300134: SpriteSheet2ndEffect_76
+    21300136: SpriteSheet2ndEffect_77
+    21300138: SpriteSheet2ndEffect_78
+    21300140: SpriteSheet2ndEffect_79
+    21300142: SpriteSheet2ndEffect_80
+    21300144: SpriteSheet2ndEffect_81
+    21300146: SpriteSheet2ndEffect_82
+    21300148: SpriteSheet2ndEffect_83
+    21300150: SpriteSheet2ndEffect_84
+    21300152: SpriteSheet2ndEffect_85
+    21300154: SpriteSheet2ndEffect_86
+    21300156: SpriteSheet2ndEffect_87
+    21300158: SpriteSheet2ndEffect_88
+    21300160: SpriteSheet2ndEffect_89
+    21300162: SpriteSheet2ndEffect_90
+    21300164: SpriteSheet2ndEffect_91
+    21300166: SpriteSheet2ndEffect_92
+    21300168: SpriteSheet2ndEffect_93
+    21300170: SpriteSheet2ndEffect_84
+    21300172: SpriteSheet2ndEffect_84
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SpriteSheet2ndEffect_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1950
+        width: 135
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1950
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_2
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1950
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_3
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1950
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1950
+        width: 135
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_5
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1950
+        width: 100
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_6
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1950
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_7
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1950
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_8
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1950
+        width: 100
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_9
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1950
+        width: 135
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_10
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1950
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_11
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1950
+        width: 66
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_12
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1950
+        width: 169
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_13
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1950
+        width: 237
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_14
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 1950
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_15
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 1950
+        width: 67
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_16
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 1950
+        width: 101
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_17
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 1950
+        width: 238
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_18
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 1950
+        width: 237
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_19
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 1950
+        width: 67
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_22
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1677
+        width: 67
+        height: 102
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_23
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1677
+        width: 69
+        height: 102
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_26
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1541
+        width: 67
+        height: 134
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_27
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1541
+        width: 69
+        height: 134
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_32
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1506
+        width: 67
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_33
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1506
+        width: 69
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_36
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1404
+        width: 67
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_37
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1404
+        width: 69
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_38
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1267
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_40
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1267
+        width: 135
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_41
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1267
+        width: 100
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_42
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1267
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_43
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1267
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_44
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1267
+        width: 100
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_45
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1267
+        width: 135
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_46
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1267
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_47
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1267
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_48
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 1267
+        width: 103
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_49
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1233
+        width: 66
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_50
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1233
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_51
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1236
+        width: 67
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_52
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 1233
+        width: 67
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_53
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1233
+        width: 100
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_54
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1233
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_55
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 1233
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_56
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1233
+        width: 100
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_57
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1233
+        width: 135
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_58
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1233
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_59
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1233
+        width: 68
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_60
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1233
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_61
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 1233
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_62
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1165
+        width: 32
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_63
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1165
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_64
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1165
+        width: 32
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_65
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1165
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_66
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 1165
+        width: 135
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_67
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 1165
+        width: 32
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_68
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 1165
+        width: 67
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_69
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 1165
+        width: 101
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_70
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1096
+        width: 66
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_71
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1096
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_72
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1096
+        width: 135
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_73
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1096
+        width: 100
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_74
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 1096
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_75
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1096
+        width: 34
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_76
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1096
+        width: 100
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_77
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1096
+        width: 135
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_78
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1129
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_79
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 755
+        width: 67
+        height: 237
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_80
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 755
+        width: 69
+        height: 237
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_81
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 652
+        width: 67
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_82
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 652
+        width: 69
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_83
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 550
+        width: 67
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_84
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 550
+        width: 69
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_85
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 446
+        width: 135
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_86
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 447
+        width: 34
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_87
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 446
+        width: 103
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_88
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 311
+        width: 68
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_89
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 311
+        width: 34
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_90
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 311
+        width: 33
+        height: 102
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_91
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 276
+        width: 68
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_92
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 276
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_93
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 276
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_84
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1441
+        width: 271
+        height: 404
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpriteSheet2ndEffect_84
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1085
+        width: 774
+        height: 221
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
