@@ -23,10 +23,10 @@ public class BombKB : MonoBehaviour
 
     //When the bomb enters a trigger
     #region OnTriggerEnter
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         //If the bomb hits the tires
-        if (col.gameObject.name == "Paddles")
+        if (col.gameObject.name == "Paddle")
         {
             //If the player catches a valid bomb, then add points
             if(this.renderer.material.color == gameManagerKB.roundManagerKB.currentTargetColour)
@@ -38,7 +38,6 @@ public class BombKB : MonoBehaviour
             //Otherwise, lose a life
             else
             {
-                gameManagerKB.LoseALife();
                 gameManagerKB.roundManagerKB.roundFail = true;
                 this.gameObject.SetActive(false);
             }
@@ -49,7 +48,6 @@ public class BombKB : MonoBehaviour
             //If the player drops a valid bomb, then lose a life
             if(this.renderer.material.color == gameManagerKB.roundManagerKB.currentTargetColour)
             {
-                gameManagerKB.LoseALife();
                 gameManagerKB.roundManagerKB.totalBombsMissed++;
                 gameManagerKB.roundManagerKB.roundFail = true;
                 this.gameObject.SetActive(false);

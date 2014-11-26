@@ -7,7 +7,10 @@ public class PointsManagerKB : MonoBehaviour
     public GameManagerKB gameManagerKB;
 
     public int bombValue;
-    public  int currentScore;
+    [HideInInspector]
+    public int currentScore;
+    [HideInInspector]
+    public int highscore;
 
     private int bonusLifeMark,
         nextBonusLife;
@@ -17,6 +20,8 @@ public class PointsManagerKB : MonoBehaviour
     {
         bonusLifeMark = 1000;
         nextBonusLife = 1;
+
+        highscore = PlayerPrefs.GetInt("HighScore");
     }
 
     void Update()
@@ -28,6 +33,9 @@ public class PointsManagerKB : MonoBehaviour
     public void AddPoints()
     {
         currentScore += bombValue;
+
+        if (currentScore > highscore)
+            PlayerPrefs.SetInt("HighScore", currentScore);
 
         //Checks if the score has crossed the next multiple of bonusLifeMark
         if(currentScore >= nextBonusLife * bonusLifeMark)

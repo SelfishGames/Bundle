@@ -17,28 +17,13 @@ public class PlayerControllerKB : MonoBehaviour
     #region Update
     void Update()
     {
-
-    }
-    #endregion
-
-    #region OnMouseDown
-    void OnMouseDown()
-    {
-        screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
- 
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-    }
-    #endregion
-
-    #region OnMouseDrag
-    void OnMouseDrag()
-    {
         //If the game isnt frozen
         if (!gameManagerKB.freezeMovement)
         {
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
-            float x = Camera.main.ScreenToWorldPoint(curScreenPoint).x + offset.x;
+            //float x = Camera.main.ScreenToWorldPoint(curScreenPoint).x + offset.x;
+            float x = Camera.main.ScreenToWorldPoint(curScreenPoint).x;
 
             Vector3 dragPos = transform.position;
             dragPos.x = x;
@@ -48,4 +33,33 @@ public class PlayerControllerKB : MonoBehaviour
         }
     }
     #endregion
+
+    //#region OnMouseDown
+    //void OnMouseDown()
+    //{
+    //    screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+ 
+    //    offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+    //}
+    //#endregion
+
+    //#region OnMouseDrag
+    //void OnMouseDrag()
+    //{
+    //    //If the game isnt frozen
+    //    if (!gameManagerKB.freezeMovement)
+    //    {
+    //        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+
+    //        //float x = Camera.main.ScreenToWorldPoint(curScreenPoint).x + offset.x;
+    //        float x = Camera.main.ScreenToWorldPoint(curScreenPoint).x;
+
+    //        Vector3 dragPos = transform.position;
+    //        dragPos.x = x;
+    //        dragPos.x = Mathf.Clamp(dragPos.x, leftWall, rightWall);
+
+    //        transform.position = dragPos;
+    //    }
+    //}
+    //#endregion
 }

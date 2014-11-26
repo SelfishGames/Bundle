@@ -22,28 +22,16 @@ public class BombDropperKB : MonoBehaviour
         rightWall = 6.5f;
 
     private bool isMoving = false;
+
+    private Vector3 heading, 
+        oldDirection, 
+        newDirection;
     #endregion
 
     #region Start
     void Start()
     {
         targetPos = this.transform.position;
-    }
-    #endregion
-
-    //Gets an inactive bomb to drop
-    #region GetBomb
-    Transform GetBomb()
-    {
-        //Find and return an inactive bomb
-        for (int i = 0; i < bombList.Count; i++)
-        {
-            if (!bombList[i].activeSelf)
-            {
-                return bombList[i].transform;
-            }
-        }
-        return null;
     }
     #endregion
 
@@ -66,9 +54,18 @@ public class BombDropperKB : MonoBehaviour
             {
                 //If the dropper is not close to its targetPosition, then keep moving it closer
                 if (Vector3.Distance(transform.position, targetPos) >= 0.5f)
+                {
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
+
+                    //This restarts the sliding SFX when the dropper starts 
+                    //moving to a new position
+                    if (!gameManagerKB.audioManagerKB.soundEffectsList[0].isPlaying)
+                        gameManagerKB.audioManagerKB.soundEffectsList[0].Play();
+                }
                 else
+                {
                     isMoving = false;
+                }
             }
 
             //Every time the timer passes the drop delay
@@ -108,6 +105,11 @@ public class BombDropperKB : MonoBehaviour
                 timer = 0;
             }
         }
+        else
+        {
+            //Stops the slide SFX when all the bombs have been dropped
+            gameManagerKB.audioManagerKB.soundEffectsList[0].Stop();
+        }
     }
     #endregion
 
@@ -115,8 +117,38 @@ public class BombDropperKB : MonoBehaviour
     #region SetTargetPosition
     void SetTargetPosition()
     {
-        //Picks a random position for the dropper to move to
+        //Sets the oldDirection to the last calculated direction
+        oldDirection = newDirection;
+
+        //Picks a random X position for the dropper to move to
         targetPos.x = Random.Range(leftWall, rightWall);
+
+        //The heading from the transform to the target position
+        heading = targetPos - transform.position;
+        //The normalized direction
+        newDirection = heading / heading.magnitude;
+
+        //If the dropper has changed the direction of its movement
+        //then reset the SFX
+        if (newDirection != oldDirection)
+            gameManagerKB.audioManagerKB.soundEffectsList[0].Stop();
+
+    }
+    #endregion
+
+    //Gets an inactive bomb to drop
+    #region GetBomb
+    Transform GetBomb()
+    {
+        //Find and return an inactive bomb
+        for (int i = 0; i < bombList.Count; i++)
+        {
+            if (!bombList[i].activeSelf)
+            {
+                return bombList[i].transform;
+            }
+        }
+        return null;
     }
     #endregion
 }

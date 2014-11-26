@@ -9,6 +9,7 @@ public class GameManagerKB : MonoBehaviour
     public RoundManagerKB roundManagerKB;
     public BombDropperKB bombDropperKB;
     public GUIManagerKB guiManagerKB;
+    public AudioManagerKB audioManagerKB;
     public Transform paddles;
 
     [HideInInspector]
@@ -22,8 +23,8 @@ public class GameManagerKB : MonoBehaviour
 
     private bool gameOver;
 
-    private int currentState,
-        roundIndex;
+    public int currentState;
+    private int roundIndex;
     private const int MENU_STATE = 0,
         ROUND_START_STATE = 1,
         PLAYING_STATE = 2,
@@ -53,8 +54,13 @@ public class GameManagerKB : MonoBehaviour
         {
             case MENU_STATE:
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    guiManagerKB.DisplayTitleScreen();
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        guiManagerKB.ResetGUI();
                         currentState = ROUND_START_STATE;
+                    }
                     break;
                 }
             case ROUND_START_STATE:
@@ -62,18 +68,18 @@ public class GameManagerKB : MonoBehaviour
                     //Setup the number of bombs to be dropped and the point value of each bomb
                     roundManagerKB.SetupRound();
 
+                    guiManagerKB.DisplayInGameScreen();
+
                     roundIndex = roundManagerKB.currentRound;
 
                     currentState = PLAYING_STATE;
+
+                    audioManagerKB.musicList[0].Play();
 
                     break;
                 }
             case PLAYING_STATE:
                 {
-                    //If the player loses all 3 lives during play
-                    if (gameOver)
-                        currentState = GAMEOVER_STATE;
-
                     //Continue to drop bombs
                     bombDropperKB.DropBombs();
 
@@ -85,7 +91,17 @@ public class GameManagerKB : MonoBehaviour
                     }
                     else if(roundManagerKB.roundFail)
                     {
-                        currentState = BOMB_MISSED_STATE;
+                        LoseALife();
+
+                        //If all lives are lost, then end the game
+                        if (playerLives == 0)
+                        {
+                            guiManagerKB.ResetGUI();
+                            currentState = GAMEOVER_STATE;
+                        }
+                        //Otherwise continue the game
+                        else
+                            currentState = BOMB_MISSED_STATE;
                     }
                     
                     break;
@@ -100,7 +116,7 @@ public class GameManagerKB : MonoBehaviour
                     //of bombs for this round can be dropped
                     roundManagerKB.totalBombsDropped = roundManagerKB.totalBombsCaught;
 
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetMouseButton(0))
                     {
                         //Reduces the speed difficulty to match that of the previous round,
                         //within the range of the specified rounds
@@ -120,7 +136,7 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_END_STATE:
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetMouseButton(0))
                     {
                         //Increase round number
                         roundManagerKB.currentRound++;
@@ -135,9 +151,11 @@ public class GameManagerKB : MonoBehaviour
                 }
             case GAMEOVER_STATE:
                 {
-                    guiManagerKB.gameOverText.gameObject.SetActive(true);
+                    roundManagerKB.DestroyActiveBombs();
 
-                    if (Input.GetKey(KeyCode.Space))
+                    guiManagerKB.DisplayGameOverScreen();
+
+                    if (Input.GetMouseButton(0))
                         Application.LoadLevel("Kaboom");
 
                     break;
@@ -153,10 +171,6 @@ public class GameManagerKB : MonoBehaviour
         paddles.GetChild(playerLives - 1).gameObject.SetActive(false);
 
         playerLives--;
-        Debug.Log("Lives left: " + playerLives);
-
-        if (playerLives == 0)
-            gameOver = true;
     }
     #endregion
 
