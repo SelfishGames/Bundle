@@ -15,14 +15,14 @@ public class GameManagerKB : MonoBehaviour
     [HideInInspector]
     public bool freezeMovement;
 
-    //[HideInInspector]
     //For the bomb and player things colours
-    public List<Color> randomColours = new List<Color>();
+    public List<Color> randomColours = new List<Color>(4);
 
     private int playerLives;
 
-    private bool gameOver;
+    private bool gameOver = false;
 
+    [HideInInspector]
     public int currentState;
     private int roundIndex;
     private const int MENU_STATE = 0,
@@ -31,6 +31,9 @@ public class GameManagerKB : MonoBehaviour
         BOMB_MISSED_STATE = 3,
         ROUND_END_STATE = 4,
         GAMEOVER_STATE = 5;
+
+    private int totalGamesPlayed,
+        totalRoundsBeaten;
     #endregion
 
     #region Start
@@ -44,6 +47,9 @@ public class GameManagerKB : MonoBehaviour
         playerLives = 3;
         gameOver = false;
         currentState = MENU_STATE;
+
+        totalGamesPlayed = PlayerPrefs.GetInt("TotalGamesPlayed");
+        totalRoundsBeaten = PlayerPrefs.GetInt("TotalRoundsBeaten");
     }
     #endregion
 
@@ -54,11 +60,10 @@ public class GameManagerKB : MonoBehaviour
         {
             case MENU_STATE:
                 {
-                    guiManagerKB.DisplayTitleScreen();
+                    freezeMovement = true;
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        guiManagerKB.ResetGUI();
                         currentState = ROUND_START_STATE;
                     }
                     break;
@@ -68,18 +73,20 @@ public class GameManagerKB : MonoBehaviour
                     //Setup the number of bombs to be dropped and the point value of each bomb
                     roundManagerKB.SetupRound();
 
-                    guiManagerKB.DisplayInGameScreen();
+                    guiManagerKB.currentState = 3;
 
                     roundIndex = roundManagerKB.currentRound;
 
-                    currentState = PLAYING_STATE;
-
-                    audioManagerKB.musicList[0].Play();
+                    if(!audioManagerKB.musicList[0].isPlaying)
+                        audioManagerKB.musicList[0].Play();
 
                     break;
                 }
             case PLAYING_STATE:
                 {
+                    //Unfreeze the game
+                    freezeMovement = false;
+
                     //Continue to drop bombs
                     bombDropperKB.DropBombs();
 
@@ -96,7 +103,6 @@ public class GameManagerKB : MonoBehaviour
                         //If all lives are lost, then end the game
                         if (playerLives == 0)
                         {
-                            guiManagerKB.ResetGUI();
                             currentState = GAMEOVER_STATE;
                         }
                         //Otherwise continue the game
@@ -136,12 +142,17 @@ public class GameManagerKB : MonoBehaviour
                 }
             case ROUND_END_STATE:
                 {
-                    if (Input.GetMouseButton(0))
+                    guiManagerKB.currentState = 5;
+
+                    if (Input.GetMouseButtonDown(0))
                     {
                         //Increase round number
                         roundManagerKB.currentRound++;
 
                         roundManagerKB.roundSuccess = false;
+
+                        //Increment the total rounds beaten for statistics
+                        totalRoundsBeaten++;
 
                         //Move to the next round
                         currentState = ROUND_START_STATE;
@@ -153,11 +164,17 @@ public class GameManagerKB : MonoBehaviour
                 {
                     roundManagerKB.DestroyActiveBombs();
 
-                    guiManagerKB.DisplayGameOverScreen();
-
                     if (Input.GetMouseButton(0))
-                        Application.LoadLevel("Kaboom");
+                    {
+                        //Increase and assign the # of games played
+                        totalGamesPlayed++;
+                        PlayerPrefs.SetInt("TotalGamesPlayed", totalGamesPlayed);
 
+                        //Assigns the # of rounds beaten 
+                        PlayerPrefs.SetInt("TotalRoundsBeaten", totalRoundsBeaten);
+
+                        Application.LoadLevel("Kaboom");
+                    }
                     break;
                 }
         }
